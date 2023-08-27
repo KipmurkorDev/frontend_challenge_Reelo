@@ -2,3 +2,7 @@
 .search-container{
     margin: 40% 40%;
 }
+.app{
+    overflow-x: hidden;
+    width: 100vh;
+}

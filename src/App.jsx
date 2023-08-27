@@ -3,20 +3,23 @@ import { Container, Row, Col } from 'react-bootstrap'
 import SearchBar from './Components/SearchBar'
 import DisplayTable from './Components/DisplayTable'
 import { useEffect, useState } from 'react'
+import Papa from "papaparse";
 import axios from 'axios'
+import Header from './Components/Header'
 function App() {
-  const [data, setData]=useState([]);
-  const apiKey='jHb13SOiRbXBl1c3smFyADa4JZ3HLMQo81p94qym'
-  console.log(data);
+  const [data, setData] = useState([])
+  const [filterData, setFilterData] = useState([])
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://exoplanetarchive.ipac.caltech.edu/TAP/sync?request=doQuery&lang=ADQL&query=SELECT * FROM ps&api_key=${apiKey}`);
-        if (response.status === 200) {
-          setData(response.data);
-        } else {
-          console.error('Failed to fetch data. Status code:', response.status);
-        }
+        const file = await axios.get('../src/assets/data.csv', { responseType: "blob" })
+        Papa.parse(file.data, {
+          header: true,
+          skipEmptyLines: true,
+          complete: function (results) {
+            setData(results.data)
+          }
+        });
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -25,10 +28,11 @@ function App() {
     fetchData();
   }, []);
   return (
-    <Container fluid>
+    <Container fluid className='app'>
       <Row>
-        <SearchBar />
-        <DisplayTable data={data}/>
+        <Header/>
+        <SearchBar data={data} setFilterData={setFilterData} />
+        <DisplayTable filterData={filterData} />
       </Row>
 
     </Container>
