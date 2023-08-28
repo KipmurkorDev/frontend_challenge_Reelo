@@ -4,17 +4,16 @@ import { handleAsc, handleDesc } from '../utils/OrderArr'
 
 function DisplayTable({ filterData }) {
   const [tvalues, setTvalues] = useState([])
+  console.log(filterData);
 
   const tabelCol = ['PLANET NAME', 'HOST NAME', 'DISCOVERY METHOD', 'DISCOVERY YEAR', 'DISCOVERY FACILITY'];
   const sortArr = (str, sort, filterData) => {
     if (sort === 'desc') {
       const results = handleDesc(str, filterData)
-      console.log(results);
       setTvalues(results)
     }
     else if (sort === 'asc') {
       const results = handleAsc(str, filterData)
-      console.log(results);
       setTvalues(results)
     }
     setTvalues(filterData)
@@ -22,10 +21,8 @@ function DisplayTable({ filterData }) {
   }
   useEffect(() => {
     sortArr('', '', filterData)
-  }, [tvalues])
+  }, [tvalues, filterData])
 
-
-console.log(tvalues)
   return (
     <>
       {tvalues.length ? <Container className='mx-5'>
