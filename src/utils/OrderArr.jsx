@@ -6,6 +6,7 @@ export const handleDesc=(str, filterData)=>{
     if(str==='DISCOVERY FACILITY') str="discovery_facility"
 
     const results= filterData.reverse()
+    console.log(results, "desc");
     return results
   }
   export const handleAsc=(str, filterData)=>{
@@ -16,5 +17,7 @@ export const handleDesc=(str, filterData)=>{
     if(str==='DISCOVERY FACILITY') str="discovery_facility"
   
     const results= filterData.reverse()
+    console.log(results);
+
     return results
   }

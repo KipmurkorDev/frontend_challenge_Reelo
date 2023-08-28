@@ -4,7 +4,6 @@ import { handleAsc, handleDesc } from '../utils/OrderArr'
 
 function DisplayTable({ filterData }) {
   const [tvalues, setTvalues] = useState([])
-  console.log(filterData);
 
   const tabelCol = ['PLANET NAME', 'HOST NAME', 'DISCOVERY METHOD', 'DISCOVERY YEAR', 'DISCOVERY FACILITY'];
   const sortArr = (str, sort, filterData) => {
