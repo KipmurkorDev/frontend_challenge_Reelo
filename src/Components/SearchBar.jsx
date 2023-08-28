@@ -26,6 +26,7 @@ function SearchBar({ data, setFilterData}) {
         <Form.Select
           as="select"
           value={values.host_name}
+          key={values.host_name}
           onChange={e => {setValues({...values, host_name:e.target.value,})
            }}>
             <option>Host Name</option>
@@ -42,6 +43,7 @@ function SearchBar({ data, setFilterData}) {
         <Form.Select
           as="select"
           value={values.discovery_method}
+          key={values.discovery_method}
           onChange={e => {setValues({...values, discovery_method:e.target.value,})
            }}>            
            <option>Discovery Method</option>
@@ -58,6 +60,7 @@ function SearchBar({ data, setFilterData}) {
         <Form.Select
           as="select"
           value={values.discovery_year}
+          key={values.discovery_year}
           onChange={e => {setValues({...values, discovery_year:e.target.value,})
            }}>           
             <option>Discovery Year</option>
