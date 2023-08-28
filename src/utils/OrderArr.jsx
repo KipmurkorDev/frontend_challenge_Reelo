@@ -18,6 +18,5 @@ export const handleDesc=(str, filterData)=>{
   
     const results= filterData.reverse()
     console.log(results);
-
     return results
   }

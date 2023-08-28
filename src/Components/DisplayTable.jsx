@@ -41,7 +41,7 @@ function DisplayTable({ filterData }) {
         </Row>
         {tvalues?.map((value, index) => {
           return (
-            <Row key={index} className=''>
+            <Row key={index} style={{paddingRight:"4%"}}>
               <Col className='py-0 fs-6'>{value.planet_name}</Col>
               <Col className='fs-6'>{value.host_name}</Col>
               <Col className='fs-6'>{value.discovery_method}</Col>
